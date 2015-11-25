@@ -1,10 +1,10 @@
 ## perfSONAR Light docker container
 
-The docker container runs all perfSONAR light services.
-See: https://code.google.com/p/perfsonar-ps/wiki/Level1and2Install 
-This can be used to run perfSONAR RPMs on a Docker capable system. 
+This docker container runs all perfSONAR light services. It can be used to run perfSONAR RPMs on a Docker capable system. 
 
 This container is set to always run until manually stopped.
+
+See https://code.google.com/p/perfsonar-ps/wiki/Level1and2Install for further information.
 
 ### Requirements
 
@@ -29,7 +29,7 @@ $ docker-compose up -d
 
 ## Testing
 
-test perfSONAR tools from another host with owamp and bwctl installed:
+Test perfSONAR tools from another host with owamp and bwctl installed:
 
 ```
 $ owping hostname
@@ -38,11 +38,12 @@ $ bwctl -T iperf3 -c hostname
 
 ##Notes:
 
-The hostname is assume to be the same is the base host. That can be changed.
-See: https://docs.docker.com/articles/networking/
+The hostname is assume to be the same is the base host. That can be changed. Refer to https://docs.docker.com/articles/networking/ for more information.
 
 ## Security:
-make sure the following ports are allowed by the base host:
+
+Make sure the following ports are allowed by the base host:
+
 * bwctl
  * 4823
  * 5001-5900
@@ -54,5 +55,5 @@ make sure the following ports are allowed by the base host:
  * 8090
  * 8096
 
-See: http://www.perfsonar.net/deploy/security-considerations/
+See http://www.perfsonar.net/deploy/security-considerations/ for further issues with perfSONAR security.
 
