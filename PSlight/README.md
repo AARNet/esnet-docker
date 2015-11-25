@@ -57,3 +57,6 @@ Make sure the following ports are allowed by the base host:
 
 See http://www.perfsonar.net/deploy/security-considerations/ for further issues with perfSONAR security.
 
+## Credits
+
+Forked from https://github.com/esnet/docker
