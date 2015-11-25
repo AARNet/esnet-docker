@@ -2,22 +2,39 @@
 
 The docker container runs all perfSONAR light services.
 See: https://code.google.com/p/perfsonar-ps/wiki/Level1and2Install 
-This can be used to run perfSONAR RPMs on a Ubuntu or Debian host.
+This can be used to run perfSONAR RPMs on a Docker capable system. 
+
+This container is set to always run until manually stopped.
+
+### Requirements
+
+* docker 1.5 or later
+* docker-compose ( https://docs.docker.com/compose/install/ ) 
+
+## Build
 
 First, edit ls_registration_daemon.conf with the information for your site.
 
 Next, build the container (in the directory containing 'Dockerfile')
->docker build -t ps_light .
+
+```
+$ docker-compose build 
+```
 
 Run the container
->docker run -d -P --net=host -v /var/run ps_light
+
+```
+$ docker-compose up -d
+```
 
 ## Testing
 
 test perfSONAR tools from another host with owamp and bwctl installed:
->owping hostname
 
->bwctl -T iperf3 -c hostname
+```
+$ owping hostname
+$ bwctl -T iperf3 -c hostname
+```
 
 ##Notes:
 
@@ -26,19 +43,16 @@ See: https://docs.docker.com/articles/networking/
 
 ## Security:
 make sure the following ports are allowed by the base host:
- bwctl:4823, 5001-5900, 6001-6200 ; owamp:861, 8760-9960, lookup service: 8090, 8096
+* bwctl
+ * 4823
+ * 5001-5900
+ * 6001-6200 
+* owamp
+ * 861
+ * 8760-9960
+* lookup service
+ * 8090
+ * 8096
+
 See: http://www.perfsonar.net/deploy/security-considerations/
-
-
-###other useful docker commands 
->docker ps -a   # show running docker images and their container ID
-
->docker exec -it ID bash  # attach to running container
-
->docker stop ID
-
->docker rm $(docker ps -a -q ) # remove all old containers
-
->docker images  # list all images
-
 
