@@ -1,0 +1,10 @@
+ps_light:
+  build: .
+  restart: always
+  ports:
+    - "861"
+    - "4823"
+    - "5001-5900"
+    - "6001-6200"
+    - "8760-9960"
+  net: "host"
